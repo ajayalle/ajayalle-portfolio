@@ -4165,6 +4165,15 @@ exit       close dev mode`;
         const formData = new FormData(contactForm);
         formData.set("_subject", "New Portfolio Message — AJAY.DEV");
         formData.set("_replyto", document.getElementById("cemail").value.trim());
+        
+        // Record submission time in Indian Standard Time
+        const submittedAtIST = new Date().toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          dateStyle: "medium",
+          timeStyle: "short"
+        });
+
+        formData.set("submitted_at_ist", submittedAtIST);
 
         const response = await fetch("https://formsubmit.co/ajax/ajaychandrashekharalle@gmail.com", {
           method: "POST",
